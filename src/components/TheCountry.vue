@@ -66,7 +66,7 @@ export default {
     country: 'Russia',
     countryData: {},
 
-    geo: 'AIzaSyBHI-l2ast6O0FzAfeLOY85-Rha7SfXK7s',
+    geo: process.env.VUE_APP_GEO,
     L: global.L,
     map: null,
 
