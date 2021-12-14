@@ -1,4 +1,6 @@
 # vue-covid-tracker
+Covid Statistics and tracker using Vue.
+Created for practice.
 
 ## Project setup
 ```
