@@ -15,6 +15,7 @@
         <TheContinent />
         <TheCountry />
       </v-container>
+      <TheFooter />
     </v-main>
   </v-app>
 </template>
@@ -24,6 +25,7 @@ import TheWorld from '@/components/TheWorld.vue'
 import TheContinent from '@/components/TheContinent.vue'
 import TheCountry from '@/components/TheCountry.vue'
 import TheClock from '@/components/TheClock.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 export default {
   name: 'App',
@@ -31,7 +33,8 @@ export default {
     TheWorld,
     TheContinent,
     TheCountry,
-    TheClock
+    TheClock,
+    TheFooter
   },
   
 };

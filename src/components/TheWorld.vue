@@ -6,7 +6,6 @@
       <v-col cols=12 sm=6 md=4>
         <v-card class='confirmed'>
           <v-card-title>Confirmed Cases</v-card-title>
-          <!-- <v-card-subtitle>Date here</v-card-subtitle> -->
           <p class='today p-case'>+ {{world.todayCases | numeral('0,0')}} <span>TODAY</span></p>
           <p class='total grey lighten-3'>{{world.cases | numeral('0,0')}} <span>TOTAL</span></p>
         </v-card>
@@ -15,7 +14,6 @@
       <v-col cols=12 sm=6 md=4>
         <v-card class='recovered'>
           <v-card-title>Recovered</v-card-title>
-          <!-- <v-card-subtitle>Date here</v-card-subtitle> -->
           <p class='today p-recovered'>+ {{world.todayRecovered | numeral('0,0')}} <span>TODAY</span></p>
           <p class='total grey lighten-3'>{{world.recovered | numeral('0,0')}} <span>TOTAL</span></p>
         </v-card>
@@ -24,7 +22,6 @@
       <v-col cols=12 sm=12 md=4>
         <v-card class='death'>
           <v-card-title>Deaths</v-card-title>
-          <!-- <v-card-subtitle>Date here</v-card-subtitle> -->
           <p class='today p-death'>+ {{world.todayDeaths | numeral('0,0')}} <span>TODAY</span></p>
           <p class='total grey lighten-3'>{{world.deaths | numeral('0,0')}} <span>TOTAL</span></p>
         </v-card>
@@ -51,8 +48,6 @@ export default {
   }),
   mounted: function() {
     this.getCountryData();
-    // console.log('EverydayLine', this.chart)
-    
   },
   methods: {
     async getCountryData() {

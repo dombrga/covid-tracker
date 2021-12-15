@@ -19,9 +19,9 @@
         <v-col cols=12 sm=6 md=4>
           <v-card class='confirmed'>
             <v-progress-circular v-if=isLoading :indeterminate=isLoading></v-progress-circular>
+            <v-card-title>Confirmed Cases</v-card-title>
             <template v-if=!isLoading>
-              <v-card-title>Confirmed Cases</v-card-title>
-              <p class='today p-case'>+ {{countryData.todayCases}} <span>TODAY</span></p>
+              <p class='today p-case' >+ {{countryData.todayCases}} <span>TODAY</span></p>
               <p class='total grey lighten-3'>{{countryData.cases | numeral('0,0')}} <span>TOTAL</span></p>
             </template>
           </v-card>
@@ -30,8 +30,8 @@
         <v-col cols=12 sm=6 md=4>
           <v-card min-width='' class='recovered'>
             <v-progress-circular v-if=isLoading :indeterminate=isLoading></v-progress-circular>
+            <v-card-title>Recovered</v-card-title>
             <template v-if=!isLoading>
-              <v-card-title>Recovered</v-card-title>
               <p class='today p-recovered'>+ {{countryData.todayRecovered}} <span>TODAY</span></p>
               <p class='total grey lighten-3'>{{countryData.recovered | numeral('0,0')}} <span>TOTAL</span></p>
             </template>
@@ -41,8 +41,8 @@
         <v-col cols=12 sm=12 md=4>
           <v-card min-width='' class='death' >
             <v-progress-circular v-if=isLoading :indeterminate=isLoading></v-progress-circular>
+            <v-card-title>Deaths</v-card-title>
             <template v-if=!isLoading>
-              <v-card-title>Deaths</v-card-title>
               <p class='today p-death'>+ {{countryData.todayDeaths}} <span>TODAY</span></p>
               <p class='total grey lighten-3'>{{countryData.deaths | numeral('0,0')}} <span>TOTAL</span></p>
             </template>
@@ -61,24 +61,23 @@ import { countryList, toNumFormat } from '@/helpers/variables.js'
 
 export default {
   name: 'TheCountry',
+  components: {  },
   data: () => ({
+    countries: countryList,
+    // country data related
     isLoading: false,
     country: 'Russia',
     countryData: {},
 
+    // map related
     geo: process.env.VUE_APP_GEO,
     L: global.L,
     map: null,
-
-    countries: countryList,
   }),
   mounted: async function() {
     this.initMap()
-    
   },
   methods: {
-    onResize() { this.windowWidth = window.innerWidth },
-
     async getCountryData() {
       const countries = await fetch('https://disease.sh/v3/covid-19/countries').then(res => res.json())
       return countries
@@ -87,22 +86,22 @@ export default {
     async setCountryData(country) {
       this.isLoading = true
       const data = await fetch('https://disease.sh/v3/covid-19/countries/' + country).then(res => res.json())
-      // console.log(data)
       this.countryData = data
-      
-      await this.setCountryMap(country)
+      // console.log('geo location', this.countryData)
+
+      this.map.setView([data.countryInfo.lat, data.countryInfo.long], 5)
+      this.isLoading = false
     },
 
-    async setCountryMap(country) {
+    /*async setCountryMap(country) {
       // get lat long of country
       const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${country}&key=${this.geo}`
       const data = await fetch(url).then(res => res.json())
-      // console.log('geo location', data)
 
       // set map view to selected country
       this.map.setView(Object.values(data.results[0].geometry.location), 5)
       this.isLoading = false
-    },
+    },*/
 
     async initMap() {
       // initialize the map

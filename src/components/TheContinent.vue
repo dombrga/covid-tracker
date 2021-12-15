@@ -7,7 +7,7 @@
       <v-simple-table class='my-5 pa-'>
         <thead class='grey darken-1'>
           <tr>
-            <th>Continent</th>
+            <th class='text-right'>Continent</th>
             <th>Cases</th>
             <th>Deaths</th>
             <th>Recovered</th>
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
           <tr v-for='(continent, idx) in allContinent' :key=idx>
-            <td class='continent'>{{continent.continent}}</td>
+            <td class='continent text-right'>{{continent.continent}}</td>
             <v-tooltip bottom>
               <template v-slot:activator="{on, attrs}">
                 <td
@@ -123,12 +123,11 @@ export default {
     background-color: #F5F5F5;
   }
 
-  .continent[data-v-a59d921a] {
+  /* .continent[data-v-a59d921a] { */
+  .v-data-table >>> tr td.continent {
     width: 200px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
-
-    /* padding-right: 0 */
   }
 
   .theme--light.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
