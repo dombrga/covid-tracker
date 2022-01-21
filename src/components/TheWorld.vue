@@ -57,9 +57,11 @@ export default {
     async getCountryData() {
       const data = await fetch('https://disease.sh/v3/covid-19/all').then(res => res.json())
       this.world = data
+      
 
-      const world = await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=all').then(res => res.json())
+      const world = await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=30').then(res => res.json())
       this.datalineChart(world)
+
     },
 
     datalineChart(world) {

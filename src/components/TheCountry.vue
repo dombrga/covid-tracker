@@ -93,16 +93,6 @@ export default {
       this.isLoading = false
     },
 
-    /*async setCountryMap(country) {
-      // get lat long of country
-      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${country}&key=${this.geo}`
-      const data = await fetch(url).then(res => res.json())
-
-      // set map view to selected country
-      this.map.setView(Object.values(data.results[0].geometry.location), 5)
-      this.isLoading = false
-    },*/
-
     async initMap() {
       // initialize the map
       this.map = this.L.map('map')

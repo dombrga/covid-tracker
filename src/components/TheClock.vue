@@ -27,10 +27,6 @@ export default {
 </script>
 
 <style scoped>
-  p {
-    /* text-align: right; */
-  }
-
   .sec-clock {
     position: relative;
   }
