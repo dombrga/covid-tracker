@@ -1,6 +1,8 @@
-# vue-covid-tracker
-Covid Statistics and tracker using Vue.
-Created for practice.
+# Covid Tracker
+Covid Tracker in Vue.
+
+
+- Data from [disease.sh](https://github.com/dombrga/nft-preview-card)
 
 ## Project setup
 ```

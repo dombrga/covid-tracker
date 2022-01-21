@@ -29,11 +29,15 @@
     </v-row>
 
     <EverydayLine :height='400' :chart-data=lineData css-classes='chart' />
+    <div>
+      <canvas id='ito-chart'></canvas>
+    </div>
   </section>
 </template>
 
 <script>
 import EverydayLine from './chart/EverydayLine.js'
+// import Chart from 'chart.js'
 
 export default {
   name: 'TheWorld',
@@ -75,10 +79,6 @@ export default {
         let cs = Math.abs(world['cases'][labels[i]] - world['cases'][labels[i+1]])
         const dt = Math.abs(world['deaths'][labels[i]] - world['deaths'][labels[i+1]])
         const rc = Math.abs(world['recovered'][labels[i]] - world['recovered'][labels[i+1]])
-
-        // if(labels[i] === '12/9/20') {
-        //   cs = 671998 // hard-coded because api data for this date is wrong. New data taken in https://ourworldindata.org/coronavirus-data
-        // }
 
         cases.push(cs)
         deaths.push(dt)
